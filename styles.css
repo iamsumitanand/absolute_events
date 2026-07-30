@@ -529,9 +529,15 @@ img {
 
 .form-grid-light {
   display: grid;
-  grid-template-columns: repeat(4, 1fr) auto;
-  gap: 16px;
-  align-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+/* Submit button spans the full width beneath the 2x2 field grid */
+.form-grid-light > .btn {
+  grid-column: 1 / -1;
+  justify-content: center;
 }
 
 .field-group {
@@ -559,6 +565,13 @@ img {
   outline: none;
   transition: all 0.3s ease;
   width: 100%;
+  min-width: 0; /* let inputs shrink with their grid column, no native-control blowout */
+  height: 46px; /* uniform control height across text/select/number/date */
+}
+
+/* Textarea (modal notes) opts out of the fixed control height */
+textarea.input-light {
+  height: auto;
 }
 
 .input-light:focus {
