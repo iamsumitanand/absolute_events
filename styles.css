@@ -1065,4 +1065,13 @@ img {
   .stories-grid { grid-template-columns: 1fr; }
   .proof-num { font-size: 2.4rem; }
   .casestudy-title { font-size: 1.6rem; }
+
+  /* Smaller, corner-tucked WhatsApp FAB so it doesn't sit over CTAs */
+  .whatsapp-concierge {
+    width: 52px;
+    height: 52px;
+    font-size: 1.5rem;
+    bottom: 16px;
+    right: 16px;
+  }
 }
