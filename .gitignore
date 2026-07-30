@@ -1,0 +1,10 @@
+# Test / tooling artifacts
+.playwright-mcp/
+
+# Internal audit doc — not part of the deployable site
+company_info.md
+
+# OS / editor junk
+Thumbs.db
+.DS_Store
+*.log

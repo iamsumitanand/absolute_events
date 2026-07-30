@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absolute Event & Travel Services | Handcrafted Corporate Events & Bespoke Journeys</title>
+  <meta name="description" content="Delhi/NCR's boutique event & travel concierge operational since 2013. Personal 24/7 ground managers for Corporate MICE, Incentive Trips, Luxury Vacations, Visa Concierge & Car Rentals.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://absolutetravels.in/">
+
+  <!-- Favicon (REPLACE: drop a real favicon.ico / apple-touch-icon into /images) -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Absolute Event & Travel Services">
+  <meta property="og:description" content="Crafting Unforgettable Human Stories & Flawless Corporate Events Since 2013.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://absolutetravels.in/">
+  <!-- REPLACE: use a real 1200x630 branded share image -->
+  <meta property="og:image" content="https://absolutetravels.in/images/hero_light.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured Data: TravelAgency (helps local SEO for Delhi/NCR) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Absolute Event & Travel Services",
+    "alternateName": "Absolute Travels",
+    "url": "https://absolutetravels.in/",
+    "image": "https://absolutetravels.in/images/hero_light.png",
+    "description": "Boutique event & travel concierge operational in Delhi/NCR since 2013. Corporate MICE, incentive trips, luxury vacations, visa concierge and executive car rentals.",
+    "foundingDate": "2013",
+    "priceRange": "$$$",
+    "telephone": "+91-11-49032957",
+    "email": "ops@absolutetravels.in",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "B-4, Asha Park near Hari Nagar",
+      "addressLocality": "New Delhi",
+      "postalCode": "110018",
+      "addressRegion": "Delhi",
+      "addressCountry": "IN"
+    },
+    "areaServed": "IN",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <i class="fas fa-certificate" style="color: var(--color-gold);"></i>
+        <span>Handcrafted Travel Architecture • Operational in Delhi/NCR Since 2013</span>
+      </div>
+      <div class="top-contacts">
+        <a href="tel:+919990445127"><i class="fas fa-phone-alt"></i> +91-9990445127</a>
+        <a href="tel:+919873965539"><i class="fas fa-mobile-alt"></i> +91-9873965539</a>
+        <a href="mailto:ops@absolutetravels.in"><i class="fas fa-envelope"></i> ops@absolutetravels.in</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="stamp-logo">A</div>
+        <div>
+          <span class="brand-title">Absolute</span>
+          <span class="brand-subtext">Event & Travel Services</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#story" class="nav-link">Our Story</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#mice" class="nav-link">Corporate MICE</a></li>
+        <li><a href="#visa" class="nav-link">Visa Desk</a></li>
+        <li><a href="#fleet" class="nav-link">Car Hire</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="btn btn-gold trigger-modal nav-cta-desktop">
+          <i class="fas fa-paper-plane"></i> Plan Trip / Event
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU (toggled ≤768px) -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-nav-links">
+        <li><a href="#home" class="mobile-nav-link">Home</a></li>
+        <li><a href="#story" class="mobile-nav-link">Our Story</a></li>
+        <li><a href="#services" class="mobile-nav-link">Services</a></li>
+        <li><a href="#mice" class="mobile-nav-link">Corporate MICE</a></li>
+        <li><a href="#visa" class="mobile-nav-link">Visa Desk</a></li>
+        <li><a href="#fleet" class="mobile-nav-link">Car Hire</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <button class="btn btn-gold trigger-modal" style="width: 100%; justify-content: center;">
+        <i class="fas fa-paper-plane"></i> Plan Trip / Event
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       HERO SECTION — EDITORIAL LAYOUT
+       ========================================================================== -->
+  <section class="hero-editorial" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-tag"><i class="fas fa-compass"></i> Bespoke Concierge Desk</span>
+          <h1 class="hero-headline">
+            We Don't Just Book Trips. <br>
+            We Craft <em>Unforgettable</em> Human Stories.
+          </h1>
+          <p class="hero-description">
+            Since 2013, Pravesh & our team of dedicated travel architects have been orchestrating high-stakes corporate summits, reward trips, and dream vacations across 50+ countries. Zero compromise, 24/7 ground managers, and personal care.
+          </p>
+
+          <!-- INQUIRY PILL WIDGET -->
+          <div class="inquiry-pill-bar">
+            <div class="pill-tabs">
+              <button class="pill-tab active" data-tab="corporate">
+                <i class="fas fa-building"></i> Corporate MICE
+              </button>
+              <button class="pill-tab" data-tab="holiday">
+                <i class="fas fa-sun"></i> Luxury Holidays
+              </button>
+              <button class="pill-tab" data-tab="visa">
+                <i class="fas fa-passport"></i> Visa Concierge
+              </button>
+              <button class="pill-tab" data-tab="car">
+                <i class="fas fa-car-side"></i> Executive Fleet
+              </button>
+            </div>
+
+            <div id="dynamic-inquiry-form" class="form-grid-light">
+              <div class="field-group">
+                <label>Event / Trip Type</label>
+                <select class="input-light" id="corp-type">
+                  <option>Corporate Summit & MICE</option>
+                  <option>Employee Incentive Trip</option>
+                  <option>Product Launch / Gala</option>
+                  <option>Destination Wedding</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>Destination</label>
+                <input type="text" class="input-light" placeholder="e.g. Dubai, Switzerland, Goa" id="corp-dest">
+              </div>
+              <div class="field-group">
+                <label>Delegates / Guests</label>
+                <input type="number" class="input-light" placeholder="e.g. 120 Attendees" id="corp-guests">
+              </div>
+              <div class="field-group">
+                <label>Month</label>
+                <input type="month" class="input-light" id="corp-date">
+              </div>
+              <button class="btn btn-navy" style="margin-top: 18px;" onclick="triggerQuickInquiry('corporate')">
+                Plan Event <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGGERED EDITORIAL FRAMES -->
+        <div class="staggered-gallery">
+          <div class="wax-seal-badge">
+            <span>24/7</span>
+            <strong>GROUND</strong>
+            <span>GUARDIAN</span>
+          </div>
+
+          <div class="frame-main">
+            <!-- TODO(perf): re-encode source PNGs to WebP to cut page weight -->
+            <img src="images/hero_light.png" alt="Luxury travel resort arranged by Absolute Travels" width="700" height="440" decoding="async" fetchpriority="high">
+          </div>
+
+          <div class="frame-secondary">
+            <img src="images/mice_light.png" alt="Corporate gala ballroom event" width="450" height="260" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOUNDER'S LETTER / HUMAN TOUCH SECTION
+       ========================================================================== -->
+  <section class="human-touch-section" id="story">
+    <div class="container">
+      <div class="founder-box">
+        <div class="founder-image-wrapper">
+          <!-- REPLACE: real photo of Pravesh / the team (portrait, ~600x800). This is your #1 trust asset. -->
+          <img src="images/founder.jpg" alt="Pravesh, Managing Partner & Travel Director at Absolute Travels" width="600" height="420" loading="lazy" decoding="async" onerror="this.src='images/mice_light.png'">
+          <div class="founder-tag-overlay">
+            <h4 style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">Personal On-Ground Care</h4>
+            <p style="font-size: 0.8rem; opacity: 0.85;">24x7 Dedicated Managers Traveling With Every Group</p>
+          </div>
+        </div>
+
+        <div>
+          <span class="editorial-tag">A Letter From Our Founder</span>
+          <h2 class="founder-quote">
+            "When your delegates fly across the globe, you don't need a cold automated portal. You need a human guardian on the ground."
+          </h2>
+          
+          <p class="founder-body">
+            At Absolute Event & Travel Services, we built our reputation over the last 11 years on a simple promise: <strong>0% Compromise</strong>. When a corporate house trusts us with 200 employees for an incentive trip or when a family trusts us with their vacation, we take personal ownership. 
+          </p>
+
+          <p class="founder-body">
+            From ensuring authentic Jain and Indian meals in remote global destinations to having our senior tour managers available 24 hours a day to resolve any unexpected crisis on the ground — we provide the warmth, care, and precision that no algorithm can ever replace.
+          </p>
+
+          <div class="signature-block">
+            <div>
+              <div class="signature-name">Pravesh & Team</div>
+              <p style="font-size: 0.85rem; color: var(--color-gold-hover); font-weight: 600;">Managing Partner & Travel Director</p>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 800; color: var(--color-gold);">100%</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Transparent Pricing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PROOF STAT STRIP  (REPLACE all numbers with real, verified figures)
+       ========================================================================== -->
+  <section class="proof-section">
+    <div class="container">
+      <div class="proof-grid">
+        <div class="proof-item">
+          <span class="proof-num">11<span>+</span></span>
+          <p class="proof-label">Years Operational</p>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">500<span>+</span></span>
+          <p class="proof-label">Events Delivered</p>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">50<span>+</span></span>
+          <p class="proof-label">Countries Covered</p>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">40k<span>+</span></span>
+          <p class="proof-label">Delegates Moved</p>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">92<span>%</span></span>
+          <p class="proof-label">Repeat Clients</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CASE STUDY  (repeatable template — REPLACE with a real engagement)
+       ========================================================================== -->
+  <section class="casestudy-section">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="editorial-tag">Signature Delivery</span>
+        <h2 class="editorial-title">A Recent <span>Case Study</span></h2>
+      </div>
+
+      <div class="casestudy-card">
+        <div class="casestudy-media">
+          <!-- REPLACE: real photo from the engagement -->
+          <img src="images/mice_light.png" alt="Corporate incentive offsite in Dubai" width="560" height="420" loading="lazy" decoding="async">
+        </div>
+        <div class="casestudy-body">
+          <span class="casestudy-kicker">Corporate Incentive Offsite • Dubai</span>
+          <h3 class="casestudy-title">180 Delegates, 4 Days, Zero Compromise</h3>
+          <p class="casestudy-text">
+            <!-- REPLACE: real engagement details, client (with permission), and outcome -->
+            A leading enterprise trusted us with a 180-delegate reward trip to Dubai. From chartered
+            transfers and a themed gala dinner to authentic Jain and Indian meals sourced on the ground,
+            our senior managers stayed on-site 24/7. Result: flawless execution and a repeat mandate.
+          </p>
+          <ul class="casestudy-metrics">
+            <li><strong>180</strong> Delegates</li>
+            <li><strong>4</strong> Days On-Ground</li>
+            <li><strong>100%</strong> On-Time Logistics</li>
+          </ul>
+          <button class="btn btn-outline-gold trigger-modal">
+            Plan Your Offsite <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SERVICES & BUSINESS DIVISIONS
+       ========================================================================== -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="editorial-tag">Curated Solutions</span>
+        <h2 class="editorial-title">Our Core <span>Service Pillars</span></h2>
+        <p class="editorial-subtitle">Crafted with technical precision and human care for corporations and discerning individuals.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card-white" id="mice">
+          <div class="service-num">01</div>
+          <h3 class="service-title-white">Corporate MICE & Summits</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Turnkey orchestration of corporate meetings, incentive tours, international product launches, and gala dinners.</p>
+
+          <ul class="service-feature-list">
+            <li><i class="fas fa-check"></i> Global Venue Sourcing & Contract Negotiation</li>
+            <li><i class="fas fa-check"></i> 24/7 Experienced Tour Managers On-Ground</li>
+            <li><i class="fas fa-check"></i> Live Entertainment, DJs, VJs & Theme Galas</li>
+            <li><i class="fas fa-check"></i> Specialized Jain & Indian Culinary Care</li>
+          </ul>
+
+          <button class="btn btn-outline-gold trigger-modal" style="margin-top: auto; justify-content: center;">
+            Plan Corporate Pitch <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card-white">
+          <div class="service-num">02</div>
+          <h3 class="service-title-white">Bespoke Vacations & FIT</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Customized international itineraries and handpicked 5-star resort retreats for families, couples, and honeymooners.</p>
+
+          <ul class="service-feature-list">
+            <li><i class="fas fa-check"></i> Tailor-Made Itineraries (Europe, Asia, Americas)</li>
+            <li><i class="fas fa-check"></i> Handpicked 4★ & 5★ Luxury Accommodations</li>
+            <li><i class="fas fa-check"></i> Forex Cards & Comprehensive Travel Cover</li>
+            <li><i class="fas fa-check"></i> Private Sightseeing & VIP Airport Transfers</li>
+          </ul>
+
+          <button class="btn btn-outline-gold trigger-modal" style="margin-top: auto; justify-content: center;">
+            Explore Vacations <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card-white">
+          <div class="service-num">03</div>
+          <h3 class="service-title-white">Visa & Passport Desk</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Full-fledged internal documentation department ensuring transparent, hassle-free visa processing for over 50+ nations.</p>
+
+          <ul class="service-feature-list">
+            <li><i class="fas fa-check"></i> Schengen, USA, UK, UAE & Japan Visas</li>
+            <li><i class="fas fa-check"></i> Rigorous Pre-Submission Document Audit</li>
+            <li><i class="fas fa-check"></i> Passport Application & Tatkal Guidance</li>
+            <li><i class="fas fa-check"></i> Embassy Liaison & Appointment Slots</li>
+          </ul>
+
+          <button class="btn btn-outline-gold trigger-modal" style="margin-top: auto; justify-content: center;">
+            Consult Visa Desk <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       VISA CONCIERGE INTERACTIVE DESK (LIGHT THEME)
+       ========================================================================== -->
+  <section class="visa-section" id="visa">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="editorial-tag">Documentation Assurance</span>
+        <h2 class="editorial-title">Interactive <span>Visa Desk</span></h2>
+        <p class="editorial-subtitle">Select your destination country to review mandatory document checklists and typical embassy processing times.</p>
+      </div>
+
+      <div class="visa-card-container">
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--color-navy); margin-bottom: 10px;">Select Destination</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Our visa specialists inspect every statement and cover letter to maximize approval confidence.</p>
+
+          <div class="country-grid-light">
+            <button class="country-pill-btn active" data-country="schengen">
+              <i class="fas fa-globe-europe" style="color: var(--color-gold);"></i> Schengen Area
+            </button>
+            <button class="country-pill-btn" data-country="usa">
+              <i class="fas fa-flag-usa" style="color: var(--color-gold);"></i> United States
+            </button>
+            <button class="country-pill-btn" data-country="uk">
+              <i class="fas fa-crown" style="color: var(--color-gold);"></i> United Kingdom
+            </button>
+            <button class="country-pill-btn" data-country="uae">
+              <i class="fas fa-city" style="color: var(--color-gold);"></i> UAE / Dubai
+            </button>
+            <button class="country-pill-btn" data-country="singapore">
+              <i class="fas fa-synagogue" style="color: var(--color-gold);"></i> Singapore
+            </button>
+            <button class="country-pill-btn" data-country="japan">
+              <i class="fas fa-torii-gate" style="color: var(--color-gold);"></i> Japan
+            </button>
+          </div>
+        </div>
+
+        <div class="visa-detail-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-light); padding-bottom: 16px; margin-bottom: 20px;">
+            <div>
+              <h4 id="visa-detail-title" style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--color-navy);">Schengen Visa (Europe)</h4>
+              <span id="visa-detail-processing" style="font-size: 0.85rem; color: var(--color-gold-hover); font-weight: 600;">Average Processing: 10 - 15 Working Days | Validity: Up to 90 Days</span>
+            </div>
+            <span style="background: var(--color-gold-light); color: var(--color-gold-hover); padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 700;">
+              Full Pre-Audit
+            </span>
+          </div>
+
+          <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-gold-hover); font-weight: 700; margin-bottom: 14px;">Mandatory Document Checklist:</p>
+          
+          <ul id="visa-detail-docs" style="list-style: none;">
+            <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-main);"><i class="fas fa-check" style="color: var(--color-gold);"></i> Valid Original Passport (at least 6 months validity)</li>
+            <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-main);"><i class="fas fa-check" style="color: var(--color-gold);"></i> Bank Statements (Last 6 Months with Official Stamp)</li>
+            <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-main);"><i class="fas fa-check" style="color: var(--color-gold);"></i> Income Tax Returns (ITR Acknowledgements - Last 3 Years)</li>
+            <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-main);"><i class="fas fa-check" style="color: var(--color-gold);"></i> Confirmed Flight & Hotel Reservation Coverage</li>
+          </ul>
+
+          <button class="btn btn-gold trigger-modal" style="width: 100%; margin-top: 24px; justify-content: center;">
+            <i class="fas fa-file-signature"></i> Start Visa Process
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CAR HIRE FLEET (LIGHT THEME)
+       ========================================================================== -->
+  <section class="fleet-section" id="fleet">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="editorial-tag">Executive Chauffeurs</span>
+        <h2 class="editorial-title">Luxury Fleet <span>& Rentals</span></h2>
+        <p class="editorial-subtitle">Chauffeur-driven vehicles for airport transfers, VVIP delegations, wedding convoys, and outstation trips in Delhi/NCR and across India.</p>
+      </div>
+
+      <div class="fleet-grid-light">
+        <div class="fleet-item-white">
+          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--color-navy); margin-bottom: 6px;">Executive Sedans</h3>
+          <p style="font-size: 0.85rem; color: var(--color-gold-hover); font-weight: 600; margin-bottom: 16px;">Toyota Camry / Swift Dzire / Etios</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Punctual transfers for airport pickups, daily business meetings, and local city travel.</p>
+          <button class="btn btn-outline-gold trigger-modal" style="width: 100%; justify-content: center;">Book Sedan</button>
+        </div>
+
+        <div class="fleet-item-white" style="border-color: var(--color-gold); background: #FFFDF9;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--color-navy); margin-bottom: 6px;">Premium SUVs</h3>
+          <p style="font-size: 0.85rem; color: var(--color-gold-hover); font-weight: 600; margin-bottom: 16px;">Innova Crysta / Toyota Fortuner</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Top choice for executive VIP guests, delegation movements, and outstation travel.</p>
+          <button class="btn btn-gold trigger-modal" style="width: 100%; justify-content: center;">Reserve SUV</button>
+        </div>
+
+        <div class="fleet-item-white">
+          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--color-navy); margin-bottom: 6px;">Group Coaches</h3>
+          <p style="font-size: 0.85rem; color: var(--color-gold-hover); font-weight: 600; margin-bottom: 16px;">Tempo Traveler (12 - 26 Seater)</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Ideal for wedding shuttles, corporate team offsites, and delegation logistics.</p>
+          <button class="btn btn-outline-gold trigger-modal" style="width: 100%; justify-content: center;">Book Group Coach</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       HUMAN TESTIMONIALS / CLIENT LETTERS
+       ========================================================================== -->
+  <section class="stories-section">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="editorial-tag">Client Letters</span>
+        <h2 class="editorial-title">Words From Our <span>Travelers</span></h2>
+      </div>
+
+      <!-- ============================================================
+           PLACEHOLDER TESTIMONIALS — replace all three with real,
+           permissioned client quotes (real name + company). B2B buyers
+           spot generic quotes instantly; these hurt trust until swapped.
+           ============================================================ -->
+      <div class="stories-grid" style="margin-top: 40px;">
+        <div class="story-card">
+          <p style="font-style: italic; color: var(--text-main); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.7;">
+            "Absolute Event & Travel Services organized our corporate annual offsite in Dubai for 180 delegates. Pravesh and his team were physically present on ground 24/7. The Jain food arrangements were flawless. Highly recommended!"
+          </p>
+          <div>
+            <h4 style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-navy);">Rajesh Kumar</h4>
+            <p style="font-size: 0.8rem; color: var(--color-gold-hover); font-weight: 600;">VP HR, Tech Corporation</p>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <p style="font-style: italic; color: var(--text-main); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.7;">
+            "We were struggling with our UK and Schengen visas due to tight dates. Their visa team audited our bank statements, corrected our itineraries, and got our approvals without a single hitch."
+          </p>
+          <div>
+            <h4 style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-navy);">Sanya Malhotra</h4>
+            <p style="font-size: 0.8rem; color: var(--color-gold-hover); font-weight: 600;">Leisure Traveler</p>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <p style="font-style: italic; color: var(--text-main); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.7;">
+            "Hired their Innova Crysta fleet for a 4-day wedding event in Delhi NCR. Immaculate vehicles, extremely polite drivers, and 100% on-time pickup. Outstanding service."
+          </p>
+          <div>
+            <h4 style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-navy);">Amit Sharma</h4>
+            <p style="font-size: 0.8rem; color: var(--color-gold-hover); font-weight: 600;">Business Owner, New Delhi</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EDITORIAL FOOTER & CONTACT
+       ========================================================================== -->
+  <footer class="footer-editorial" id="contact">
+    <div class="container">
+      <div class="footer-grid-editorial">
+        <div>
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="stamp-logo" style="width: 38px; height: 38px; font-size: 1.2rem;">A</div>
+            <div>
+              <span class="brand-title" style="color: #FFF;">Absolute</span>
+              <span class="brand-subtext">Event & Travel Services</span>
+            </div>
+          </div>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.7;">
+            Operational in Delhi/NCR since 2013 with nationwide and overseas channel partners. Providing 360° corporate ticketing, MICE events, luxury holidays, visa concierge, and car rentals.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF; margin-bottom: 20px;">Services</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+            <li><a href="#mice">Corporate MICE & Summits</a></li>
+            <li><a href="#services">Leisure Holiday Packages</a></li>
+            <li><a href="#visa">Visa Concierge Desk</a></li>
+            <li><a href="#visa">Passport Assistance</a></li>
+            <li><a href="#fleet">Car Rentals & Fleet</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF; margin-bottom: 20px;">Company</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#story">Our Founder's Note</a></li>
+            <li><a href="#visa">Visa Checklist</a></li>
+            <li><a href="#contact">Delhi Office</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF; margin-bottom: 20px;">Head Office</h4>
+          <p style="font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 12px;">
+            <i class="fas fa-map-marker-alt" style="color: var(--color-gold); margin-right: 8px;"></i>
+            <strong>Absolute Event & Travel Services</strong><br>
+            B-4, Asha Park near Hari Nagar, New Delhi - 110018
+          </p>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 6px;">
+            <i class="fas fa-phone" style="color: var(--color-gold); margin-right: 8px;"></i> +91-11-49032957 | +91-9990445127
+          </p>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75);">
+            <i class="fas fa-envelope" style="color: var(--color-gold); margin-right: 8px;"></i> <a href="mailto:ops@absolutetravels.in">ops@absolutetravels.in</a><br>
+            <i class="fas fa-user" style="color: var(--color-gold); margin-right: 8px;"></i> Contact Person (Pravesh): <a href="mailto:pravesh@absolutetravels.in">pravesh@absolutetravels.in</a>
+          </p>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+        <p>© 2026 Absolute Event & Travel Services. Operational since 2013.</p>
+        <p>Handcrafted Editorial Experience</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL INQUIRY POPUP (LIGHT THEME) -->
+  <div class="modal-backdrop-light" id="inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <div class="modal-card-light">
+      <button class="modal-close" aria-label="Close inquiry form" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+
+      <span class="editorial-tag" style="margin-bottom: 8px;">Direct Desk</span>
+      <h3 id="modal-heading" style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 800; color: var(--color-navy); margin-bottom: 8px;">
+        Plan Your Travel or Event
+      </h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;">
+        Fill out your details and Pravesh or a senior travel consultant will connect with you within 30 minutes.
+      </p>
+
+      <form id="modal-inquiry-form">
+        <!-- ============================================================
+             WEB3FORMS: paste your free access key below to receive leads
+             by email at ops@absolutetravels.in. Get it (free, no signup
+             wall) at https://web3forms.com — enter that email, copy the key.
+             Until a real key is set, submission falls back to WhatsApp only.
+             ============================================================ -->
+        <input type="hidden" name="access_key" value="988f6dc3-a239-4a34-829d-a376a994d386">
+        <input type="hidden" name="subject" value="New Website Inquiry — Absolute Travels">
+        <input type="hidden" name="from_name" value="Absolute Travels Website">
+        <!-- honeypot: bots fill this, humans don't -->
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+
+        <div class="field-group" style="margin-bottom: 16px;">
+          <label>Your Full Name</label>
+          <input type="text" class="input-light" id="modal-name" name="name" placeholder="e.g. Rahul Verma" required>
+        </div>
+
+        <div class="field-group" style="margin-bottom: 16px;">
+          <label>Mobile Number / WhatsApp</label>
+          <input type="tel" class="input-light" id="modal-phone" name="phone" placeholder="e.g. +91 98765 43210" required>
+        </div>
+
+        <div class="field-group" style="margin-bottom: 16px;">
+          <label>Service Category</label>
+          <select class="input-light" id="modal-service-type" name="service">
+            <option value="corporate">Corporate MICE / Event Summit</option>
+            <option value="holiday">Bespoke Holiday Package</option>
+            <option value="visa">Visa / Passport Assistance</option>
+            <option value="car">Executive Car Rental</option>
+          </select>
+        </div>
+
+        <div class="field-group" style="margin-bottom: 24px;">
+          <label>Event / Journey Notes</label>
+          <textarea class="input-light" id="modal-notes" name="notes" rows="3" placeholder="Tell us destination, approximate dates, custom dietary needs (Jain food), or number of guests..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; font-size: 1rem;">
+          <i class="fab fa-whatsapp"></i> Send Inquiry
+        </button>
+
+        <p id="modal-status" class="modal-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/919990445127?text=Hello%20Absolute%20Travels!%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="whatsapp-concierge" aria-label="Direct WhatsApp Concierge">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
