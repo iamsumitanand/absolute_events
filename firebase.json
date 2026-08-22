@@ -1,0 +1,38 @@
+{
+  "hosting": {
+    "public": ".",
+    "cleanUrls": false,
+    "trailingSlash": false,
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "**/.*",
+      "**/node_modules/**",
+      "*.md",
+      "*.stackdump",
+      "_mockup-founder.html",
+      "**/*mockup*.html",
+      "true_2d5_image_depth.html"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(png|jpg|jpeg|gif|webp|svg|ico|woff|woff2)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=3600" }
+        ]
+      },
+      {
+        "source": "**/*.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        ]
+      }
+    ]
+  }
+}

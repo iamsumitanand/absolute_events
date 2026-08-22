@@ -8,3 +8,10 @@ company_info.md
 Thumbs.db
 .DS_Store
 *.log
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Crash junk
+*.stackdump
