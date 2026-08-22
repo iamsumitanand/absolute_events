@@ -1088,3 +1088,272 @@ textarea.input-light {
     right: 16px;
   }
 }
+
+/* ==========================================================================
+   SUB-PAGE CHROME  (visa.html, fleet.html)
+   Added when the site split from one page into three.
+   ========================================================================== */
+
+/* Compact hero for service pages — shorter than the home hero so the
+   actual content starts above the fold. */
+.page-hero {
+  background: var(--bg-dark-accent);
+  color: #FFFFFF;
+  padding: 72px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 75% 0%, rgba(197, 160, 89, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.page-hero .container { position: relative; z-index: 1; }
+
+.page-hero .editorial-tag { color: var(--color-gold); }
+.page-hero .editorial-tag::before,
+.page-hero .editorial-tag::after { background: var(--color-gold); }
+
+.page-hero-title {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  max-width: 16ch;
+}
+.page-hero-title span { color: var(--color-gold); font-style: italic; }
+
+.page-hero-sub {
+  font-size: 1.08rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.75;
+  max-width: 62ch;
+  margin-bottom: 28px;
+}
+
+.page-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* The base .btn-outline-gold uses navy text, which is the same colour as the
+   dark hero background — it renders as an empty pill. Invert it in here. */
+.page-hero .btn-outline-gold {
+  color: #FFFFFF;
+  border-color: var(--color-gold);
+}
+.page-hero .btn-outline-gold:hover {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  border-color: var(--color-gold);
+}
+
+/* Breadcrumb — also mirrored as BreadcrumbList JSON-LD on each sub-page */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.breadcrumb a { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+.breadcrumb a:hover { color: var(--color-gold); }
+.breadcrumb span[aria-current] { color: var(--color-gold); font-weight: 600; }
+
+/* ==========================================================================
+   SERVICE TEASER CARDS  (home page -> sub-pages)
+   ========================================================================== */
+.teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.teaser-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.teaser-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-gold);
+}
+
+.teaser-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--color-gold-light);
+  color: var(--color-gold-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  margin-bottom: 20px;
+}
+
+.teaser-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 10px;
+}
+
+.teaser-text {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.teaser-points {
+  list-style: none;
+  margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.teaser-points li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+.teaser-points i { color: var(--color-gold); font-size: 0.8rem; }
+
+/* push the CTA to the bottom so cards of unequal text still align */
+.teaser-card .btn { margin-top: auto; align-self: flex-start; }
+
+/* ==========================================================================
+   FLEET SPEC TABLE  (fleet.html)
+   ========================================================================== */
+.spec-wrap {
+  margin-top: 48px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  overflow-x: auto;               /* wide table scrolls, page never does */
+  box-shadow: var(--shadow-soft);
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;               /* below this the wrapper scrolls */
+}
+
+.spec-table th,
+.spec-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.92rem;
+}
+
+.spec-table thead th {
+  background: var(--bg-subtle);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--color-gold-hover);
+  white-space: nowrap;
+}
+
+.spec-table tbody tr:last-child td { border-bottom: none; }
+.spec-table tbody tr:hover { background: #FFFDF9; }
+
+.spec-vehicle {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+.spec-models {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-gold-hover);
+  margin-top: 3px;
+}
+
+/* ==========================================================================
+   PROCESS TIMELINE  (visa.html)
+   ========================================================================== */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.process-step {
+  position: relative;
+  padding-top: 26px;
+  border-top: 2px solid var(--border-light);
+}
+.process-step::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.process-num {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--color-gold-hover);
+  margin-bottom: 8px;
+}
+.process-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+.process-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   RESPONSIVE — SUB-PAGE ADDITIONS
+   ========================================================================== */
+@media (max-width: 960px) {
+  .teaser-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .page-hero { padding: 52px 0 48px; }
+  .page-hero-title { font-size: 2.1rem; max-width: none; }
+  .page-hero-sub { font-size: 1rem; }
+  .page-hero-actions .btn { width: 100%; justify-content: center; }
+  .process-grid { grid-template-columns: 1fr; }
+  .teaser-card { padding: 28px; }
+  .teaser-card .btn { width: 100%; justify-content: center; }
+}
