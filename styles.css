@@ -410,17 +410,25 @@ img {
 /* ==========================================================================
    HOME HERO — full-bleed image banner (hero-banner.webp has the wordmark
    baked into the pixels — see the sr-only <h1> in index.html for the real,
-   selectable/SEO text). object-fit:contain, not cover: the file is a fixed
-   2752×1536 (~1.79:1) composition and cover was cropping "A"/"E" off the
-   ends of ABSOLUTE. contain + a matching near-black backdrop keeps the whole
-   graphic (and the whole word) intact at every viewport.
+   selectable/SEO text).
+
+   Sized by aspect-ratio, not 100vh: forcing 100vh on a fixed ~1.79:1 (2752×
+   1536) image meant object-fit:cover cropped "A"/"E" off the ends of
+   ABSOLUTE, and object-fit:contain fixed the crop but left visible dark
+   letterbox bars around the image — which is exactly what read as "a card
+   placed on top" instead of an actual header section. Matching the
+   section's own aspect-ratio to the image means it fills edge-to-edge at
+   every viewport width with zero crop and zero bars — the image *is* the
+   section, not a boxed graphic sitting inside one. object-fit:cover on the
+   image is just a rounding-safety net; at a matching ratio it never
+   actually crops anything.
    ========================================================================== */
 .home-hero {
   position: relative;
-  height: 100vh;
-  min-height: 640px;
+  width: 100%;
+  aspect-ratio: 2752 / 1536;
   overflow: hidden;
-  background: #070611; /* sampled from hero-banner.webp's own near-black corners */
+  background: #070611; /* fallback color while the image loads */
 }
 
 .home-hero-image {
@@ -428,8 +436,12 @@ img {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
+  /* Slight overscale so the scroll parallax (initHomeHero in script.js) has
+     a little room to pan without exposing the background-color edge — at an
+     exact-matching aspect-ratio there's otherwise zero slack to move within. */
+  transform: scale(1.06);
   will-change: transform;
 }
 
@@ -1193,11 +1205,9 @@ textarea.input-light {
   .nav-links { display: none; }
   .nav-cta-desktop { display: none; }
   .nav-toggle { display: block; }
-  /* hero-banner.webp is a fixed 2752×1536 (~1.79:1) composition — at 100vh on a
-     narrow/tall phone, object-fit:contain leaves large dead bars above/below a
-     thin strip. Size the hero to the image's own aspect ratio instead: zero
-     letterbox, full-bleed banner, no crop of the baked-in wordmark. */
-  .home-hero { height: 55.8vw; min-height: 0; }
+  /* .home-hero is aspect-ratio-driven at every width now, so no height override
+     is needed here — just hide the scroll cue, the hero is short enough on a
+     phone that it would sit on top of the baked-in subhead text. */
   .home-hero-scrollcue { display: none; }
   .form-grid-light { grid-template-columns: 1fr; }
   .services-grid, .fleet-grid-light { grid-template-columns: 1fr; }
