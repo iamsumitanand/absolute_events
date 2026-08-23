@@ -57,24 +57,12 @@
   }
   </script>
 </head>
-<body>
+<body class="hero-nav-page">
 
-  <!-- TOP ANNOUNCEMENT BAR -->
-  <div class="top-bar">
-    <div class="container">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <i class="fas fa-certificate" style="color: var(--color-gold);"></i>
-        <span>Handcrafted Travel Architecture • Operational in Delhi/NCR Since 2013</span>
-      </div>
-      <div class="top-contacts">
-        <a href="tel:+919990445127"><i class="fas fa-phone-alt"></i> +91-9990445127</a>
-        <a href="mailto:ops@absolutetravels.com"><i class="fas fa-envelope"></i> ops@absolutetravels.com</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- NAVIGATION BAR -->
-  <nav class="navbar">
+  <!-- NAVIGATION BAR — transparent over the hero, solidifies on scroll (see initHomeHero in script.js).
+       No top announcement bar here by design (approved hero mockup was nav-directly-on-image);
+       phone/email still live in the footer and the floating WhatsApp button. -->
+  <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <a href="index.html" class="brand-logo">
         <div class="stamp-logo"><img src="images/logo-mark.png" alt="Absolute Event &amp; Travel Services logo"></div>
@@ -122,17 +110,39 @@
   </nav>
 
   <!-- ==========================================================================
-       HERO SECTION — EDITORIAL LAYOUT
+       HOME HERO — full-bleed image banner, wordmark baked into hero-banner.webp.
+       Nav above sits transparent over this and solidifies on scroll (script.js).
        ========================================================================== -->
-  <section class="hero-editorial" id="home">
+  <section class="home-hero" id="home">
+    <img class="home-hero-image" id="home-hero-image"
+         src="images/hero-banner.webp"
+         alt=""
+         width="2200" height="1228"
+         fetchpriority="high" decoding="async">
+    <div class="home-hero-scrim" aria-hidden="true"></div>
+
+    <!-- hero-banner.webp has "Absolute Event & Travel Services" baked into the pixels
+         (that's the wheel/wordmark interplay the design calls for) — none of it is real
+         text, so this carries the actual page heading for SEO and screen readers. -->
+    <h1 class="sr-only">Absolute Event &amp; Travel Services</h1>
+
+    <a href="#plan" class="home-hero-scrollcue">
+      <span>Scroll</span><i class="fas fa-chevron-down" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <!-- ==========================================================================
+       HERO SECTION — EDITORIAL LAYOUT (headline, inquiry form, staggered gallery)
+       ========================================================================== -->
+  <section class="hero-editorial" id="plan">
     <div class="container">
       <div class="hero-grid">
         <div>
           <span class="hero-tag"><i class="fas fa-compass"></i> Bespoke Concierge Desk</span>
-          <h1 class="hero-headline">
+          <h2 class="hero-headline">
             We Don't Just Book Trips. <br>
             We Craft <em>Unforgettable</em> Human Stories.
-          </h1>
+          </h2>
           <p class="hero-description">
             Since 2013, Pravesh & our team of dedicated travel architects have been orchestrating high-stakes corporate summits, reward trips, and dream vacations across 50+ countries. Zero compromise, 24/7 ground managers, and personal care.
           </p>

@@ -367,6 +367,124 @@ img {
 }
 
 /* ==========================================================================
+   HOME HERO NAV — transparent-over-image, solidifies on scroll
+   Scoped to body.hero-nav-page (index.html only) so visa.html/fleet.html keep
+   their normal sticky, always-opaque .navbar untouched. Toggled by
+   initHomeHero() in script.js, which no-ops on pages without #home-hero-image.
+   ========================================================================== */
+.hero-nav-page .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.hero-nav-page .navbar.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.hero-nav-page .navbar:not(.scrolled) .brand-title,
+.hero-nav-page .navbar:not(.scrolled) .brand-subtext,
+.hero-nav-page .navbar:not(.scrolled) .nav-link,
+.hero-nav-page .navbar:not(.scrolled) .nav-toggle {
+  color: #FFFFFF;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+}
+
+.hero-nav-page .navbar:not(.scrolled) .nav-link:hover,
+.hero-nav-page .navbar:not(.scrolled) .nav-link.active {
+  color: var(--color-gold);
+}
+
+.hero-nav-page .navbar:not(.scrolled) .stamp-logo {
+  box-shadow: 0 0 0 1.5px var(--color-gold), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* ==========================================================================
+   HOME HERO — full-bleed image banner (hero-banner.webp has the wordmark
+   baked into the pixels — see the sr-only <h1> in index.html for the real,
+   selectable/SEO text). object-fit:contain, not cover: the file is a fixed
+   2752×1536 (~1.79:1) composition and cover was cropping "A"/"E" off the
+   ends of ABSOLUTE. contain + a matching near-black backdrop keeps the whole
+   graphic (and the whole word) intact at every viewport.
+   ========================================================================== */
+.home-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  background: #070611; /* sampled from hero-banner.webp's own near-black corners */
+}
+
+.home-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  will-change: transform;
+}
+
+.home-hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(7,10,18,0.55) 0%, rgba(7,10,18,0.1) 22%, rgba(7,10,18,0.05) 55%, rgba(7,10,18,0.85) 100%);
+}
+
+.home-hero-scrollcue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.home-hero-scrollcue:hover { color: #FFFFFF; }
+
+.home-hero-scrollcue i {
+  animation: home-hero-bob 1.8s ease-in-out infinite;
+}
+
+@keyframes home-hero-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* Visually-hidden but present for screen readers / SEO — see the sr-only <h1>
+   inside .home-hero. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-image { transition: none !important; }
+}
+
+/* ==========================================================================
    HERO SECTION — EDITORIAL LAYOUT
    ========================================================================== */
 .hero-editorial {
@@ -1075,6 +1193,12 @@ textarea.input-light {
   .nav-links { display: none; }
   .nav-cta-desktop { display: none; }
   .nav-toggle { display: block; }
+  /* hero-banner.webp is a fixed 2752×1536 (~1.79:1) composition — at 100vh on a
+     narrow/tall phone, object-fit:contain leaves large dead bars above/below a
+     thin strip. Size the hero to the image's own aspect ratio instead: zero
+     letterbox, full-bleed banner, no crop of the baked-in wordmark. */
+  .home-hero { height: 55.8vw; min-height: 0; }
+  .home-hero-scrollcue { display: none; }
   .form-grid-light { grid-template-columns: 1fr; }
   .services-grid, .fleet-grid-light { grid-template-columns: 1fr; }
   .footer-grid-editorial { grid-template-columns: 1fr; }
