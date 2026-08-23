@@ -146,6 +146,14 @@ function initVisaChecker() {
       renderVisaDetails(countryKey);
     });
   });
+
+  // Re-render the default-active country on load. Without this, the static
+  // HTML's hardcoded gold checkmarks (pre-JS fallback content) stayed on
+  // screen until the visitor's first click — the emerald "verified" color
+  // this checklist was specifically switched to never actually showed by
+  // default on any of the three pages that link here.
+  const activeBtn = document.querySelector('.country-pill-btn.active');
+  if (activeBtn) renderVisaDetails(activeBtn.getAttribute('data-country'));
 }
 
 function renderVisaDetails(key) {
@@ -179,8 +187,21 @@ function openModal(triggerEl) {
   modalLastTrigger = triggerEl || document.activeElement;
   modal.classList.add('active');
   document.body.style.overflow = 'hidden'; // scroll lock — background no longer scrolls behind the modal
-  const firstField = modal.querySelector('input, select, textarea');
-  if (firstField) firstField.focus();
+  // #modal-name specifically, not a bare 'input, select, textarea' query —
+  // the form's first children are 3 hidden inputs (access_key/subject/
+  // from_name) plus a display:none honeypot checkbox, all of which a
+  // generic query matches before ever reaching a real field, and .focus()
+  // on a hidden/display:none element is a silent no-op per spec.
+  //
+  // requestAnimationFrame, not a direct call — .active flips
+  // visibility:hidden -> visible via a CSS transition, and calling
+  // .focus() in the same synchronous tick as adding the class raced the
+  // browser's style flush: the field was still computing as hidden at
+  // call time, so focus silently failed and stayed on the trigger button.
+  requestAnimationFrame(() => {
+    const firstField = document.getElementById('modal-name');
+    if (firstField) firstField.focus();
+  });
 }
 
 function closeModal() {
