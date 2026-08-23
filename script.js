@@ -54,7 +54,9 @@ function initHomeHero() {
     const y = window.scrollY;
     navbar.classList.toggle('scrolled', y > 40);
     if (!reduceMotion && heroImage) {
-      heroImage.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
+      // scale(1.06) matches the CSS base transform (styles.css .home-hero-image) —
+      // reapplied here because setting .style.transform overwrites it otherwise.
+      heroImage.style.transform = `translate3d(0, ${y * 0.08}px, 0) scale(1.06)`;
     }
     ticking = false;
   }
