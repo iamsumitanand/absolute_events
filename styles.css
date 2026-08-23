@@ -53,7 +53,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px; /* offset for sticky navbar when jumping to anchors */
+  scroll-padding-top: 95px; /* offset for sticky navbar when jumping to anchors — matches measured navbar height */
 }
 
 body {
@@ -811,12 +811,13 @@ textarea.input-light {
 }
 
 .founder-tag-overlay {
+  /* backdrop-filter removed: background is 90% opaque, so blurring what's
+     behind it had zero visible effect — dead code, not a design choice. */
   position: absolute;
   bottom: 20px;
   left: 20px;
   right: 20px;
   background: rgba(15, 23, 42, 0.9);
-  backdrop-filter: blur(10px);
   color: #FFFFFF;
   padding: 16px;
   border-radius: var(--radius-sm);
