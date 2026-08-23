@@ -15,10 +15,12 @@
   
   --color-gold: #C5A059;       /* Champagne Royal Gold (decorative fills only) */
   --color-gold-hover: #8A6A2E; /* Darkened for WCAG AA text contrast on light bg */
+  --color-gold-dark: #B38B3F;  /* Darkened gold for gradient end-stops */
   --color-gold-light: #F7F3E9;
   --color-emerald: #0F766E;    /* Refined Emerald */
   --color-navy: #0F172A;       /* Deep Navy Text */
-  
+  --color-error: #B91C1C;      /* Error / destructive state */
+
   --text-main: #1E293B;        /* High-contrast Slate Text */
   --text-muted: #64748B;       /* Warm Medium Grey */
   --text-light: #94A3B8;
@@ -116,15 +118,15 @@ img {
 }
 
 .btn-gold {
-  background: linear-gradient(135deg, #C5A059 0%, #B38B3F 100%);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+  color: var(--color-navy); /* white-on-gold measured 2.46:1, fails WCAG AA; navy clears 8:1+ */
   box-shadow: 0 10px 25px rgba(197, 160, 89, 0.3);
 }
 
 .btn-gold:hover {
   transform: translateY(-2px);
   box-shadow: 0 15px 35px rgba(197, 160, 89, 0.45);
-  background: linear-gradient(135deg, #D4AF37 0%, #C5A059 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, var(--color-gold) 100%);
 }
 
 .btn-navy {
@@ -174,7 +176,10 @@ img {
 
 .editorial-title {
   font-family: var(--font-serif);
-  font-size: 3.2rem;
+  /* Only large heading in the file with zero responsive override — measured
+     rendering as a 3-line headline at 390px. Fluid instead of another fixed
+     breakpoint jump, since it's reused across many section widths. */
+  font-size: clamp(2rem, 1.5rem + 2.2vw, 3.2rem);
   font-weight: 800;
   line-height: 1.2;
   color: var(--color-navy);
@@ -182,7 +187,7 @@ img {
 }
 
 .editorial-title span {
-  color: var(--color-gold);
+  color: var(--color-gold-hover); /* --color-gold measured 2.15-2.46:1 on porcelain/white, fails WCAG AA */
   font-style: italic;
 }
 
@@ -192,6 +197,54 @@ img {
   max-width: 720px;
   margin: 0 auto 48px auto;
   font-weight: 400;
+}
+
+/* Section-header variants — 10 sections across the site were using the
+   identical centered kicker/title/subtitle "masthead" with nothing to
+   distinguish one from the next. Centered stays for sections introducing a
+   symmetric grid (it's the right call there); these two give the others
+   real asymmetry instead of another repeat. */
+.section-head-left {
+  text-align: left;
+}
+
+.section-head-left .editorial-subtitle {
+  margin: 0 0 48px 0;
+}
+
+.section-head-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 48px;
+  text-align: left;
+  margin-bottom: 48px;
+}
+
+.section-head-split .editorial-title,
+.section-head-split .editorial-tag {
+  margin-bottom: 0;
+}
+
+.section-head-split .editorial-tag {
+  margin-bottom: 12px;
+}
+
+.section-head-split .editorial-subtitle {
+  margin: 0 0 6px 0;
+  max-width: 340px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .section-head-split {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .section-head-split .editorial-subtitle { max-width: none; }
 }
 
 /* ==========================================================================
@@ -366,6 +419,16 @@ img {
   color: var(--color-gold-hover);
 }
 
+.mobile-menu-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-gold-hover);
+}
+
 /* ==========================================================================
    HOME HERO NAV — transparent-over-image, solidifies on scroll
    Scoped to body.hero-nav-page (index.html only) so visa.html/fleet.html keep
@@ -494,7 +557,10 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-hero-image { transition: none !important; }
+  /* .home-hero-image no longer has a transition (parallax was removed) —
+     the actual infinite animation left running was home-hero-scrollcue i's
+     home-hero-bob keyframe, which this rule never covered. */
+  .home-hero-scrollcue i { animation: none !important; }
 }
 
 /* ==========================================================================
@@ -512,6 +578,27 @@ img {
   grid-template-columns: 1.1fr 0.9fr;
   gap: 60px;
   align-items: center;
+}
+
+/* Reusable "verified/confirmed" signal — emerald's dedicated job, distinct
+   from gold (decorative/conversion-only). Used on the visa pre-audit badge
+   and ready for the testimonials verified-chip once real quotes land. */
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--color-emerald);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.verified-badge i {
+  font-size: 0.75rem;
 }
 
 .hero-tag {
@@ -541,7 +628,7 @@ img {
 
 .hero-headline em {
   font-style: italic;
-  color: var(--color-gold);
+  color: var(--color-gold-hover); /* --color-gold measured 2.32:1 on this section's porcelain bg, fails WCAG AA */
   font-weight: 400;
 }
 
@@ -607,8 +694,8 @@ img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #C5A059 0%, #9A752B 100%);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+  color: var(--color-navy); /* white-on-gold fails WCAG AA at this size; navy clears it */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -622,57 +709,29 @@ img {
   border: 2px solid #FFFFFF;
 }
 
-/* Floating Inquiry Pill Bar */
-.inquiry-pill-bar {
-  background: #FFFFFF;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: var(--shadow-deep);
+/* Hero CTA row — replaced the old 4-tab pseudo-form (pick a category, fill
+   4 fields, hit submit, modal then asked for name/phone again anyway). One
+   ask, one modal. */
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
   margin-top: 30px;
 }
 
-.pill-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--border-light);
-  padding-bottom: 14px;
-}
-
-.pill-tab {
-  background: var(--bg-body);
-  border: 1px solid var(--border-light);
-  color: var(--text-main);
-  padding: 10px 20px;
-  border-radius: var(--radius-full);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
+.hero-cta-phone {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-navy);
 }
 
-.pill-tab.active, .pill-tab:hover {
-  background: var(--color-navy);
-  color: #FFFFFF;
-  border-color: var(--color-navy);
-}
-
-.form-grid-light {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  align-items: start;
-}
-
-/* Submit button spans the full width beneath the 2x2 field grid */
-.form-grid-light > .btn {
-  grid-column: 1 / -1;
-  justify-content: center;
+.hero-cta-phone:hover {
+  color: var(--color-gold-hover);
 }
 
 .field-group {
@@ -719,7 +778,9 @@ textarea.input-light {
    FOUNDER'S LETTER / HUMAN TOUCH SECTION
    ========================================================================== */
 .human-touch-section {
-  padding: 120px 0;
+  /* Tighter bottom: leads into the navy proof strip, shouldn't cushion it
+     in white before it even arrives. */
+  padding: 120px 0 70px 0;
   background: #FFFFFF;
 }
 
@@ -859,14 +920,16 @@ textarea.input-light {
 }
 
 .service-feature-list li i {
-  color: var(--color-gold);
+  color: var(--color-emerald); /* confirmation checkmark = verified signal, not decoration; gold stays conversion-only */
 }
 
 /* ==========================================================================
    VISA CONCIERGE DESK (LIGHT THEME)
    ========================================================================== */
 .visa-section {
-  padding: 120px 0;
+  /* Tighter than the 120px default: this section is a direct continuation
+     of Services' "what we offer" theme, not a topic change. */
+  padding: 80px 0;
   background: #FFFFFF;
 }
 
@@ -948,7 +1011,9 @@ textarea.input-light {
    HUMAN STORIES & TESTIMONIALS
    ========================================================================== */
 .stories-section {
-  padding: 120px 0;
+  /* More room above: real tonal shift from "what we offer" to "what
+     clients say". Tighter below: leads straight into the closing CTA. */
+  padding: 150px 0 90px 0;
   background: #FFFFFF;
 }
 
@@ -961,14 +1026,24 @@ textarea.input-light {
 }
 
 .story-card::before {
+  /* Was top:10px, which put an 80px glyph directly over the first line(s)
+     of quote text in the longer cards. Pulled up so it reads as a corner
+     flourish sitting above the card, not something the text fights. */
   content: '“';
   font-family: var(--font-serif);
   font-size: 5rem;
   color: var(--color-gold);
-  opacity: 0.25;
+  opacity: 0.2;
   position: absolute;
-  top: 10px;
-  right: 24px;
+  top: -22px;
+  right: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.story-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .stories-grid {
@@ -981,7 +1056,11 @@ textarea.input-light {
    PROOF STAT STRIP
    ========================================================================== */
 .proof-section {
-  padding: 70px 0;
+  /* Was 70px on all sides while its white neighbors used 120px, so the
+     navy strip read as a thin sliver drowning in surrounding whitespace
+     rather than a deliberate tonal break. More of its own room now;
+     .human-touch-section/.casestudy-section were tightened to match. */
+  padding: 100px 0;
   background: var(--color-navy);
 }
 
@@ -1016,10 +1095,82 @@ textarea.input-light {
 }
 
 /* ==========================================================================
+   CLOSING CTA — full-bleed navy, sits after testimonials
+   ========================================================================== */
+.closing-cta-section {
+  padding: 100px 0;
+  background: var(--color-navy);
+  text-align: center;
+}
+
+.closing-cta-inner {
+  max-width: 720px;
+}
+
+.closing-cta-tag {
+  color: var(--color-gold-light);
+}
+
+.closing-cta-tag::before,
+.closing-cta-tag::after {
+  background: var(--color-gold);
+}
+
+.closing-cta-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.closing-cta-title em {
+  font-style: italic;
+  color: var(--color-gold);
+  font-weight: 400;
+}
+
+.closing-cta-sub {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 40px;
+}
+
+.closing-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.closing-cta-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.closing-cta-phone:hover {
+  color: var(--color-gold);
+}
+
+@media (max-width: 768px) {
+  .closing-cta-section { padding: 72px 0; }
+  .closing-cta-actions { flex-direction: column; gap: 20px; }
+}
+
+/* ==========================================================================
    CASE STUDY
    ========================================================================== */
 .casestudy-section {
-  padding: 120px 0;
+  /* Tighter top: sits right after the navy proof strip, shouldn't cushion
+     it in white. Normal bottom: leads into services, a real topic change. */
+  padding: 70px 0 120px 0;
   background: #FFFFFF;
 }
 
@@ -1161,7 +1312,7 @@ textarea.input-light {
 }
 
 .modal-status.success { color: var(--color-emerald); }
-.modal-status.error { color: #B91C1C; }
+.modal-status.error { color: var(--color-error); }
 
 /* Floating WhatsApp Concierge Button */
 .whatsapp-concierge {
@@ -1206,11 +1357,24 @@ textarea.input-light {
   .nav-links { display: none; }
   .nav-cta-desktop { display: none; }
   .nav-toggle { display: block; }
-  /* .home-hero is aspect-ratio-driven at every width now, so no height override
-     is needed here — just hide the scroll cue, the hero is short enough on a
-     phone that it would sit on top of the baked-in subhead text. */
+  /* Pure aspect-ratio sizing (2752:1536) renders ~209px tall at a 390px
+     viewport, and the fixed transparent nav — a desktop-only "image is the
+     header" move — was covering ~45% of that already-short band, squeezing
+     the baked-in wordmark against it. Tried taller min-height + contain
+     first; that only traded the squeeze for a dead empty gap below the
+     image (contain always renders this 1.79:1 image at ~218px tall at this
+     width regardless of container height, since width is the constraining
+     dimension). Reverted. Real fix is a portrait-cropped export of the
+     source graphic (see TODO.md) — out of CSS's reach. Cheaper real win:
+     stop the nav floating over the image on mobile, since there's no hero
+     real estate left to preserve by doing so. Solid navy nav + full-height,
+     uncropped, unobscured hero band below it. */
+  .hero-nav-page .navbar:not(.scrolled) { background: var(--color-navy); }
+  /* margin, not padding: padding would eat into the aspect-ratio box itself
+     and force object-fit:cover to re-crop the image. Margin pushes the
+     whole section down, image geometry untouched. */
+  .home-hero { margin-top: 95px; }
   .home-hero-scrollcue { display: none; }
-  .form-grid-light { grid-template-columns: 1fr; }
   .services-grid, .fleet-grid-light { grid-template-columns: 1fr; }
   .footer-grid-editorial { grid-template-columns: 1fr; }
   .proof-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1371,7 +1535,7 @@ textarea.input-light {
   font-size: 0.9rem;
   color: var(--text-main);
 }
-.teaser-points i { color: var(--color-gold); font-size: 0.8rem; }
+.teaser-points i { color: var(--color-emerald); font-size: 0.8rem; } /* confirmation checkmark, not decoration */
 
 /* push the CTA to the bottom so cards of unequal text still align */
 .teaser-card .btn { margin-top: auto; align-self: flex-start; }

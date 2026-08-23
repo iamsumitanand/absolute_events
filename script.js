@@ -5,7 +5,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initHomeHero();
-  initInquiryTabs();
   initVisaChecker();
   initModalHandlers();
   initFormSubmissions();
@@ -64,154 +63,6 @@ function initHomeHero() {
   }, { passive: true });
 
   update();
-}
-
-/* --------------------------------------------------------------------------
-   1. HERO INQUIRY TABS
-   -------------------------------------------------------------------------- */
-function initInquiryTabs() {
-  const tabs = document.querySelectorAll('.pill-tab');
-  const container = document.getElementById('dynamic-inquiry-form');
-
-  const tabFields = {
-    corporate: `
-      <div class="field-group">
-        <label>Event / Trip Type</label>
-        <select class="input-light" id="corp-type">
-          <option>Corporate Summit & MICE</option>
-          <option>Employee Incentive Trip</option>
-          <option>Product Launch / Gala</option>
-          <option>Destination Wedding</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Destination</label>
-        <input type="text" class="input-light" placeholder="e.g. Dubai, Switzerland, Goa" id="corp-dest">
-      </div>
-      <div class="field-group">
-        <label>Delegates / Guests</label>
-        <input type="number" class="input-light" placeholder="e.g. 120 Attendees" id="corp-guests">
-      </div>
-      <div class="field-group">
-        <label>Month</label>
-        <input type="month" class="input-light" id="corp-date">
-      </div>
-      <button class="btn btn-navy" style="margin-top: 18px;" onclick="triggerQuickInquiry('corporate')">
-        Plan Event <i class="fas fa-arrow-right"></i>
-      </button>
-    `,
-    holiday: `
-      <div class="field-group">
-        <label>Destination</label>
-        <input type="text" class="input-light" placeholder="e.g. Maldives, Europe, Bali" id="hol-dest">
-      </div>
-      <div class="field-group">
-        <label>Travelers</label>
-        <select class="input-light" id="hol-travelers">
-          <option>Couple / Honeymoon</option>
-          <option>Family (3-5 Guests)</option>
-          <option>Group of Friends</option>
-          <option>Solo Traveler</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Duration</label>
-        <select class="input-light" id="hol-duration">
-          <option>3 - 5 Days</option>
-          <option>7 - 10 Days</option>
-          <option>2 Weeks+</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Dietary Care</label>
-        <select class="input-light" id="hol-diet">
-          <option>Standard Meals</option>
-          <option>Authentic Indian Meals</option>
-          <option>Jain Culinary Care</option>
-        </select>
-      </div>
-      <button class="btn btn-navy" style="margin-top: 18px;" onclick="triggerQuickInquiry('holiday')">
-        Explore Vacations <i class="fas fa-arrow-right"></i>
-      </button>
-    `,
-    visa: `
-      <div class="field-group">
-        <label>Country</label>
-        <select class="input-light" id="visa-country">
-          <option>Schengen Area (Europe)</option>
-          <option>United States (USA)</option>
-          <option>United Kingdom (UK)</option>
-          <option>UAE / Dubai</option>
-          <option>Singapore</option>
-          <option>Japan</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Visa Category</label>
-        <select class="input-light" id="visa-category">
-          <option>Tourist Visa</option>
-          <option>Business / Summit Visa</option>
-          <option>Family Visitor</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Applicants</label>
-        <input type="number" class="input-light" value="1" min="1" id="visa-count">
-      </div>
-      <div class="field-group">
-        <label>Urgency</label>
-        <select class="input-light" id="visa-urgency">
-          <option>Standard Audit</option>
-          <option>Fast-Track Slot</option>
-        </select>
-      </div>
-      <button class="btn btn-navy" style="margin-top: 18px;" onclick="triggerQuickInquiry('visa')">
-        Check Requirements <i class="fas fa-arrow-right"></i>
-      </button>
-    `,
-    car: `
-      <div class="field-group">
-        <label>Service Type</label>
-        <select class="input-light" id="car-type">
-          <option>Airport Pick & Drop</option>
-          <option>Local Full Day Chauffeur</option>
-          <option>Outstation Journey</option>
-          <option>Wedding Convoy</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Vehicle Class</label>
-        <select class="input-light" id="car-veh">
-          <option>Innova Crysta / Fortuner SUV</option>
-          <option>Luxury Sedan (BMW / Mercedes)</option>
-          <option>Executive Coach (Tempo)</option>
-          <option>Swift Dzire / Etios</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Pickup Location</label>
-        <input type="text" class="input-light" value="Delhi NCR" id="car-city">
-      </div>
-      <div class="field-group">
-        <label>Date</label>
-        <input type="date" class="input-light" id="car-date">
-      </div>
-      <button class="btn btn-navy" style="margin-top: 18px;" onclick="triggerQuickInquiry('car')">
-        Reserve Vehicle <i class="fas fa-arrow-right"></i>
-      </button>
-    `
-  };
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const target = tab.getAttribute('data-tab');
-      if (container && tabFields[target]) {
-        container.innerHTML = tabFields[target];
-      }
-    });
-  });
 }
 
 /* --------------------------------------------------------------------------
@@ -310,8 +161,8 @@ function renderVisaDetails(key) {
 
   if (docsList) {
     docsList.innerHTML = data.docs.map(doc => `
-      <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: #1E293B;">
-        <i class="fas fa-check" style="color: #C5A059;"></i> ${doc}
+      <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-main);">
+        <i class="fas fa-check" style="color: var(--color-emerald);"></i> ${doc}
       </li>
     `).join('');
   }
@@ -320,14 +171,27 @@ function renderVisaDetails(key) {
 /* --------------------------------------------------------------------------
    3. MODAL & INQUIRY POPUP
    -------------------------------------------------------------------------- */
-function openModal() {
+let modalLastTrigger = null;
+
+function openModal(triggerEl) {
   const modal = document.getElementById('inquiry-modal');
-  if (modal) modal.classList.add('active');
+  if (!modal) return;
+  modalLastTrigger = triggerEl || document.activeElement;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden'; // scroll lock — background no longer scrolls behind the modal
+  const firstField = modal.querySelector('input, select, textarea');
+  if (firstField) firstField.focus();
 }
 
 function closeModal() {
   const modal = document.getElementById('inquiry-modal');
-  if (modal) modal.classList.remove('active');
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+  if (modalLastTrigger && typeof modalLastTrigger.focus === 'function') {
+    modalLastTrigger.focus(); // return focus to whatever opened it
+  }
+  modalLastTrigger = null;
 }
 
 function initModalHandlers() {
@@ -338,7 +202,14 @@ function initModalHandlers() {
   openBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      openModal();
+      // Every entry point used to open the same modal always defaulted to
+      // whichever <option> is first ("Corporate MICE") — "Consult Visa Desk"
+      // and every other CTA on the site all landed on the wrong category.
+      // data-category on the button (see index/fleet/visa.html) fixes this.
+      const category = btn.getAttribute('data-category');
+      const select = document.getElementById('modal-service-type');
+      if (category && select) select.value = category;
+      openModal(btn);
     });
   });
 
@@ -356,42 +227,32 @@ function initModalHandlers() {
       closeModal();
     }
   });
+
+  // Basic focus trap: Tab/Shift+Tab cycle within the modal while it's open.
+  if (modal) {
+    modal.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab' || !modal.classList.contains('active')) return;
+      const focusable = modal.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  }
 }
 
 /* Read a field's trimmed value by id (returns '' if missing/empty). */
 function fieldVal(id) {
   const el = document.getElementById(id);
   return el && el.value ? el.value.trim() : '';
-}
-
-/* Build a readable summary from whichever hero-tab fields the user filled. */
-function buildInquirySummary(category) {
-  const map = {
-    corporate: [['Type', 'corp-type'], ['Destination', 'corp-dest'], ['Delegates', 'corp-guests'], ['Month', 'corp-date']],
-    holiday:   [['Destination', 'hol-dest'], ['Travelers', 'hol-travelers'], ['Duration', 'hol-duration'], ['Dietary', 'hol-diet']],
-    visa:      [['Country', 'visa-country'], ['Category', 'visa-category'], ['Applicants', 'visa-count'], ['Urgency', 'visa-urgency']],
-    car:       [['Service', 'car-type'], ['Vehicle', 'car-veh'], ['Pickup', 'car-city'], ['Date', 'car-date']]
-  };
-  const rows = (map[category] || [])
-    .map(([label, id]) => [label, fieldVal(id)])
-    .filter(([, v]) => v)
-    .map(([label, v]) => `${label}: ${v}`);
-  return rows.join('\n');
-}
-
-function triggerQuickInquiry(category) {
-  const select = document.getElementById('modal-service-type');
-  const notes = document.getElementById('modal-notes');
-
-  if (select) select.value = category;
-
-  // Carry the hero-form details into the modal instead of discarding them.
-  const summary = buildInquirySummary(category);
-  if (notes && summary) {
-    notes.value = notes.value ? `${summary}\n\n${notes.value}` : summary;
-  }
-
-  openModal();
 }
 
 /* --------------------------------------------------------------------------

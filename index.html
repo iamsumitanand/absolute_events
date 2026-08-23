@@ -106,6 +106,9 @@
       <button class="btn btn-gold trigger-modal" style="width: 100%; justify-content: center;">
         <i class="fas fa-paper-plane"></i> Plan Trip / Event
       </button>
+      <a href="tel:+911149032957" class="mobile-menu-call">
+        <i class="fas fa-phone-alt"></i> Call +91-11-4903-2957
+      </a>
     </div>
   </nav>
 
@@ -147,49 +150,16 @@
             Since 2013, Pravesh & our team of dedicated travel architects have been orchestrating high-stakes corporate summits, reward trips, and dream vacations across 50+ countries. Zero compromise, 24/7 ground managers, and personal care.
           </p>
 
-          <!-- INQUIRY PILL WIDGET -->
-          <div class="inquiry-pill-bar">
-            <div class="pill-tabs">
-              <button class="pill-tab active" data-tab="corporate">
-                <i class="fas fa-building"></i> Corporate MICE
-              </button>
-              <button class="pill-tab" data-tab="holiday">
-                <i class="fas fa-sun"></i> Luxury Holidays
-              </button>
-              <button class="pill-tab" data-tab="visa">
-                <i class="fas fa-passport"></i> Visa Concierge
-              </button>
-              <button class="pill-tab" data-tab="car">
-                <i class="fas fa-car-side"></i> Executive Fleet
-              </button>
-            </div>
-
-            <div id="dynamic-inquiry-form" class="form-grid-light">
-              <div class="field-group">
-                <label>Event / Trip Type</label>
-                <select class="input-light" id="corp-type">
-                  <option>Corporate Summit & MICE</option>
-                  <option>Employee Incentive Trip</option>
-                  <option>Product Launch / Gala</option>
-                  <option>Destination Wedding</option>
-                </select>
-              </div>
-              <div class="field-group">
-                <label>Destination</label>
-                <input type="text" class="input-light" placeholder="e.g. Dubai, Switzerland, Goa" id="corp-dest">
-              </div>
-              <div class="field-group">
-                <label>Delegates / Guests</label>
-                <input type="number" class="input-light" placeholder="e.g. 120 Attendees" id="corp-guests">
-              </div>
-              <div class="field-group">
-                <label>Month</label>
-                <input type="month" class="input-light" id="corp-date">
-              </div>
-              <button class="btn btn-navy" style="margin-top: 18px;" onclick="triggerQuickInquiry('corporate')">
-                Plan Event <i class="fas fa-arrow-right"></i>
-              </button>
-            </div>
+          <!-- INQUIRY CTA — was a 4-tab pseudo-form (pick a category, fill 4
+               fields, hit submit, then the modal asked for name/phone again).
+               Replaced per design review: one ask, one modal, no re-asking. -->
+          <div class="hero-cta-row">
+            <button class="btn btn-gold trigger-modal">
+              <i class="fas fa-paper-plane"></i> Plan My Trip / Event
+            </button>
+            <a href="tel:+911149032957" class="hero-cta-phone">
+              <i class="fas fa-phone-alt"></i> +91-11-4903-2957
+            </a>
           </div>
         </div>
 
@@ -223,7 +193,7 @@
         <div class="founder-image-wrapper">
           <img src="images/founder.jpg" alt="Pravesh, Managing Partner & Travel Director at Absolute Travels" width="600" height="420" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/mice_light.png'">
           <div class="founder-tag-overlay">
-            <h4 style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">Personal On-Ground Care</h4>
+            <p style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">Personal On-Ground Care</p>
             <p style="font-size: 0.8rem; opacity: 0.85;">24x7 Dedicated Managers Traveling With Every Group</p>
           </div>
         </div>
@@ -292,7 +262,7 @@
        ========================================================================== -->
   <section class="casestudy-section">
     <div class="container">
-      <div style="text-align: center;">
+      <div class="section-head-left">
         <span class="editorial-tag">Signature Delivery</span>
         <h2 class="editorial-title">A Recent <span>Case Study</span></h2>
       </div>
@@ -316,7 +286,7 @@
             <li><strong>4</strong> Days On-Ground</li>
             <li><strong>100%</strong> On-Time Logistics</li>
           </ul>
-          <button class="btn btn-outline-gold trigger-modal">
+          <button class="btn btn-outline-gold trigger-modal" data-category="corporate">
             Plan Your Offsite <i class="fas fa-arrow-right"></i>
           </button>
         </div>
@@ -349,7 +319,7 @@
             <li><i class="fas fa-check"></i> Specialized Jain & Indian Culinary Care</li>
           </ul>
 
-          <button class="btn btn-outline-gold trigger-modal" style="margin-top: auto; justify-content: center;">
+          <button class="btn btn-outline-gold trigger-modal" data-category="corporate" style="margin-top: auto; justify-content: center;">
             Plan Corporate Pitch <i class="fas fa-arrow-right"></i>
           </button>
         </div>
@@ -367,7 +337,7 @@
             <li><i class="fas fa-check"></i> Private Sightseeing & VIP Airport Transfers</li>
           </ul>
 
-          <button class="btn btn-outline-gold trigger-modal" style="margin-top: auto; justify-content: center;">
+          <button class="btn btn-outline-gold trigger-modal" data-category="holiday" style="margin-top: auto; justify-content: center;">
             Explore Vacations <i class="fas fa-arrow-right"></i>
           </button>
         </div>
@@ -385,7 +355,7 @@
             <li><i class="fas fa-check"></i> Embassy Liaison & Appointment Slots</li>
           </ul>
 
-          <button class="btn btn-outline-gold trigger-modal" style="margin-top: auto; justify-content: center;">
+          <button class="btn btn-outline-gold trigger-modal" data-category="visa" style="margin-top: auto; justify-content: center;">
             Consult Visa Desk <i class="fas fa-arrow-right"></i>
           </button>
         </div>
@@ -401,9 +371,11 @@
        ========================================================================== -->
   <section class="visa-section" id="visa">
     <div class="container">
-      <div style="text-align: center;">
-        <span class="editorial-tag">Specialist Desks</span>
-        <h2 class="editorial-title">Two Desks That Run <span>On Their Own</span></h2>
+      <div class="section-head-split">
+        <div>
+          <span class="editorial-tag">Specialist Desks</span>
+          <h2 class="editorial-title">Two Desks That Run <span>On Their Own</span></h2>
+        </div>
         <p class="editorial-subtitle">Visa documentation and ground transport each have a dedicated team. Open either desk for full checklists, specs and direct booking.</p>
       </div>
 
@@ -454,7 +426,7 @@
        ========================================================================== -->
   <section class="stories-section">
     <div class="container">
-      <div style="text-align: center;">
+      <div class="section-head-left">
         <span class="editorial-tag">Client Letters</span>
         <h2 class="editorial-title">Words From Our <span>Travelers</span></h2>
       </div>
@@ -463,6 +435,16 @@
            PLACEHOLDER TESTIMONIALS — replace all three with real,
            permissioned client quotes (real name + company). B2B buyers
            spot generic quotes instantly; these hurt trust until swapped.
+
+           Not adding a "Verified" badge to these placeholders — that would
+           be a fabricated trust signal on made-up quotes, worse than the
+           genericness problem it's meant to fix. Once real quotes land,
+           add this under the name/title block (verified-badge is already
+           built and used on visa.html's pre-audit badge):
+
+             <span class="verified-badge" style="margin-top: 8px;">
+               <i class="fas fa-check-circle"></i> Verified client, [Month Year]
+             </span>
            ============================================================ -->
       <div class="stories-grid" style="margin-top: 40px;">
         <div class="story-card">
@@ -470,7 +452,7 @@
             "Absolute Event & Travel Services organized our corporate annual offsite in Dubai for 180 delegates. Pravesh and his team were physically present on ground 24/7. The Jain food arrangements were flawless. Highly recommended!"
           </p>
           <div>
-            <h4 style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-navy);">Rajesh Kumar</h4>
+            <p style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-navy);">Rajesh Kumar</p>
             <p style="font-size: 0.8rem; color: var(--color-gold-hover); font-weight: 600;">VP HR, Tech Corporation</p>
           </div>
         </div>
@@ -480,7 +462,7 @@
             "We were struggling with our UK and Schengen visas due to tight dates. Their visa team audited our bank statements, corrected our itineraries, and got our approvals without a single hitch."
           </p>
           <div>
-            <h4 style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-navy);">Sanya Malhotra</h4>
+            <p style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-navy);">Sanya Malhotra</p>
             <p style="font-size: 0.8rem; color: var(--color-gold-hover); font-weight: 600;">Leisure Traveler</p>
           </div>
         </div>
@@ -490,10 +472,27 @@
             "Hired their Innova Crysta fleet for a 4-day wedding event in Delhi NCR. Immaculate vehicles, extremely polite drivers, and 100% on-time pickup. Outstanding service."
           </p>
           <div>
-            <h4 style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-navy);">Amit Sharma</h4>
+            <p style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-navy);">Amit Sharma</p>
             <p style="font-size: 0.8rem; color: var(--color-gold-hover); font-weight: 600;">Business Owner, New Delhi</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CLOSING CTA — the page previously ended on testimonials with no final
+       ask; the most qualified visitor (one who read the whole page) got
+       nothing. One navy slab, one gold CTA, one tel: link at real size.
+       ========================================================================== -->
+  <section class="closing-cta-section">
+    <div class="container closing-cta-inner">
+      <span class="editorial-tag closing-cta-tag">Ready When You Are</span>
+      <h2 class="closing-cta-title">Let's Plan The Trip <em>Nobody Has To Worry About.</em></h2>
+      <p class="closing-cta-sub">One call, one team, zero handoffs — corporate MICE, leisure, or documentation.</p>
+      <div class="closing-cta-actions">
+        <button class="btn btn-gold trigger-modal"><i class="fas fa-paper-plane"></i> Plan Trip / Event</button>
+        <a href="tel:+911149032957" class="closing-cta-phone"><i class="fas fa-phone-alt"></i> +91-11-4903-2957</a>
       </div>
     </div>
   </section>
@@ -546,7 +545,7 @@
             B-4, Asha Park near Hari Nagar, New Delhi - 110018
           </p>
           <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 6px;">
-            <i class="fas fa-phone" style="color: var(--color-gold); margin-right: 8px;"></i> +91-11-49032957 | +91-9990445127
+            <i class="fas fa-phone" style="color: var(--color-gold); margin-right: 8px;"></i> <a href="tel:+911149032957">+91-11-4903-2957</a> | <a href="tel:+919990445127">+91-9990445127</a>
           </p>
           <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75);">
             <i class="fas fa-envelope" style="color: var(--color-gold); margin-right: 8px;"></i> <a href="mailto:ops@absolutetravels.com">ops@absolutetravels.com</a><br>
