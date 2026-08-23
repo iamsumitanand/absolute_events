@@ -39,12 +39,16 @@ Firebase deploy too — see `firebase.json` ignore list). Processed and dropped 
 | `images/favicon.png` | `Logo.png` (cropped to the "A" mark) | Transparent, 512×512 master (69 KB) |
 | `images/apple-touch-icon.png` | same mark, on navy `#0F172A` | 180×180, opaque per iOS convention (7 KB) |
 | `images/og-image.png` | `Full Logo.png` + tagline | 1200×630 branded share card on cream `#F7F3E9` (123 KB) |
+| `images/logo-mark.png` | `Logo.png`, tight-cropped, no padding | 300×171, transparent, for the header/footer badge |
 
 `og:image` updated to `images/og-image.png` in all three pages.
 
-**Not done / flagged, not silently changed:** the header/footer still use the CSS
-"A" stamp (`.stamp-logo`, `index.html:81`), not the real logo image now available.
-That's a bigger visual change than this fix — decide separately whether to swap it in.
+**Header/footer logo — also done.** `.stamp-logo` (`index.html:81` + footer) swapped
+from the CSS "A" text badge to the real mark (`images/logo-mark.png`) inside a white
+circular chip with the existing gold border. White chip (not navy) deliberately, so
+the mark's own navy tone doesn't disappear against the navy footer background —
+verified with a Playwright screenshot of both header (white bg) and footer (navy bg)
+before committing.
 
 ### 3. Fleet capacity/baggage figures are unverified estimates
 - **Where:** `fleet.html:210` (marked with a `VERIFY` comment), table below it
@@ -142,9 +146,10 @@ page split is working — are driven by data rather than guesswork.
   `founder.png`, `Logo.png`, `Full Logo.png`) — gitignored and excluded from the
   Firebase deploy. Processed derivatives live in `/images`; go back to the masters
   if a different crop/size is ever needed.
-- **Deploy file count went up.** Four new images landed in `/images` (favicon,
-  apple-touch-icon, founder.jpg, og-image.png) — expect `found 14 files`, not 10,
-  on the next deploy. Recheck the ignore list if the jump is bigger than that.
+- **Deploy file count went up.** Five new images landed in `/images` (favicon,
+  apple-touch-icon, founder.jpg, og-image.png, logo-mark.png) — expect
+  `found 15 files`, not 10, on the next deploy. Recheck the ignore list if the
+  jump is bigger than that.
 - **`script.js` is shared across all three pages** and needs no per-page variants —
   every init null-guards or uses `querySelectorAll`.
 
