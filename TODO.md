@@ -9,6 +9,50 @@ still being served by Netlify until DNS is cut over.
 
 ---
 
+## Recently shipped — new home hero (2026-08-23)
+
+`index.html` now opens with a full-bleed image hero (`images/hero-banner.webp`, the
+Ain Dubai wheel with "ABSOLUTE / Event & Travel Services" baked into the pixels —
+client-supplied, from `Absolute Event & Travel Services/hero.png`, 7.7MB PNG resized
+to 2200px wide and converted with `sharp-cli`, 253KB). Design was iterated as a
+standalone prototype first: `hero_header_mockup.html` (untracked, ignored by
+`**/*mockup*.html`) — that history is worth skimming if this section needs more
+changes, it records two failed approaches (CSS clip-path skyline masking, then
+`background-clip:text`) before landing on "just use the client's pre-composited PNG."
+
+- **No PNG fallback shipped** — WebP-only. Support is universal enough on evergreen
+  browsers now; a lossless PNG fallback at this resolution was 5.9MB, which defeats
+  the point.
+- **`object-fit:contain`, not `cover`** — the image is a fixed ~1.79:1 composition
+  with text baked in, and `cover` was cropping "A"/"E" off the wordmark. `contain` +
+  a matching near-black backdrop (`#070611`) keeps the whole graphic intact.
+- **Mobile doesn't get a full-viewport hero** — forcing 100vh + `contain` on a
+  portrait phone left huge dead black bars. Below 768px the hero is sized to the
+  image's own aspect ratio instead (`55.8vw` tall) — full-bleed banner, no crop, but
+  not edge-to-edge full-screen. If that's ever wanted, it needs a separate
+  portrait-cropped export of the source graphic, not a CSS fix.
+- **Nav is now `position:fixed`, transparent, and solidifies on scroll** —
+  `initHomeHero()` in `script.js` toggles a `.scrolled` class. Scoped to
+  `body.hero-nav-page` (index.html only, see next point) so it can't affect
+  visa.html/fleet.html's plain sticky navbar — verified with Playwright, unaffected.
+- **The top announcement bar (phone/email strip) is gone from `index.html` only** —
+  wasn't part of the approved nav design (transparent nav directly on the hero image).
+  Phone/email are still in the footer and the floating WhatsApp button; **visa.html
+  and fleet.html still have it** — home's header chrome now deliberately differs
+  from the sub-pages'.
+- **Old hero content didn't get deleted** — the headline/description/inquiry-pill
+  form/staggered gallery (`.hero-editorial`) moved to its own section right after the
+  image hero, id changed from `#home` to `#plan` (`#home` now belongs to the image
+  hero). Nothing about the lead-capture form itself changed.
+- **Page now has exactly one `<h1>`** — a visually-hidden one carrying "Absolute
+  Event & Travel Services" (the image hero has no real text). The old
+  `.hero-headline` ("We Don't Just Book Trips...") was demoted from `h1` to `h2`
+  accordingly.
+- **Deploy file count goes up again** — `images/hero-banner.webp` is new and not in
+  any ignore pattern, so it *will* deploy. Expect **`found 16 files`**, not 15.
+
+---
+
 ## P0 — Losing money right now
 
 ### 1. Web3Forms is delivering leads to the old mailbox

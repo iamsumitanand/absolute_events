@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
+  initHomeHero();
   initInquiryTabs();
   initVisaChecker();
   initModalHandlers();
@@ -33,6 +34,39 @@ function initMobileNav() {
   menu.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', () => setOpen(false));
   });
+}
+
+/* --------------------------------------------------------------------------
+   0b. HOME HERO — transparent nav solidifies on scroll + subtle image parallax.
+   Only present on index.html (#home / #home-hero-image); no-ops elsewhere so
+   visa.html/fleet.html's plain sticky navbar is unaffected.
+   -------------------------------------------------------------------------- */
+function initHomeHero() {
+  const navbar = document.getElementById('navbar');
+  const hero = document.getElementById('home');
+  const heroImage = document.getElementById('home-hero-image');
+  if (!navbar || !hero) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking = false;
+
+  function update() {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 40);
+    if (!reduceMotion && heroImage) {
+      heroImage.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
+    }
+    ticking = false;
+  }
+
+  document.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  update();
 }
 
 /* --------------------------------------------------------------------------
