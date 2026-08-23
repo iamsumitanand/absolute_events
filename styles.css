@@ -939,7 +939,12 @@ textarea.input-light {
   border-radius: var(--radius-lg);
   padding: 48px;
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  /* minmax(0, Nfr): bare fr tracks default to an "auto" (max-content)
+     minimum, which the mobile single-column version of this grid was
+     hitting (see the ≤1024px override). No overflow at this width
+     currently, but hardening both to the same pattern rather than leaving
+     one variant fragile to future content changes. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
   gap: 48px;
 }
 
@@ -948,6 +953,9 @@ textarea.input-light {
   grid-template-columns: repeat(2, 1fr);
   gap: 14px;
   margin-top: 24px;
+  min-width: 0; /* this is itself a grid item of .visa-card-container; without
+                   this its own 2-column children's content size overrode the
+                   parent's track width instead of shrinking to fit it */
 }
 
 .country-pill-btn {
@@ -962,6 +970,10 @@ textarea.input-light {
   gap: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-width: 0; /* grid items default to min-width:auto, which let long labels
+                   ("United Kingdom") force the track wider than its 1fr share
+                   instead of wrapping — caused a 4px horizontal overflow on
+                   mobile. */
 }
 
 .country-pill-btn:hover, .country-pill-btn.active {
@@ -1271,10 +1283,10 @@ textarea.input-light {
 
 .modal-backdrop-light {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  /* inset, not width:100vw/height:100vh — vw/vh include the scrollbar
+     gutter in most browsers, which is the classic cause of a few px of
+     phantom horizontal overflow on a fixed full-screen element. */
+  inset: 0;
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(12px);
   z-index: 2000;
@@ -1344,7 +1356,11 @@ textarea.input-light {
   .staggered-gallery { height: 380px; }
   .services-grid, .fleet-grid-light { grid-template-columns: 1fr 1fr; }
   .founder-box { grid-template-columns: 1fr; }
-  .visa-card-container { grid-template-columns: 1fr; }
+  /* minmax(0, 1fr), not bare 1fr — a bare 1fr track's implicit minimum is
+     "auto" (its content's max-content width), so the nested 2-column
+     country-grid-light inside it was forcing this track wider than the
+     card's own padding allowed, overflowing the page horizontally. */
+  .visa-card-container { grid-template-columns: minmax(0, 1fr); }
   .footer-grid-editorial { grid-template-columns: 1fr 1fr; }
   .proof-grid { grid-template-columns: repeat(3, 1fr); row-gap: 36px; }
   .casestudy-card { grid-template-columns: 1fr; }
