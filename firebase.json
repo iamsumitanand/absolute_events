@@ -15,7 +15,9 @@
       "*.stackdump",
       "_mockup-founder.html",
       "**/*mockup*.html",
-      "true_2d5_image_depth.html"
+      "true_2d5_image_depth.html",
+      "inspiration/**",
+      "Absolute Event & Travel Services/**"
     ],
     "headers": [
       {

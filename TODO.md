@@ -27,15 +27,24 @@ still being served by Netlify until DNS is cut over.
 
 ## P1 — Broken in production
 
-### 2. Three referenced images return 404
-| File | Referenced from | Impact |
-|---|---|---|
-| `images/founder.jpg` | `index.html:216` | Founder portrait falls back to a banquet-hall photo. This is the #1 trust asset on a site whose whole pitch is "a real person is on the ground." |
-| `images/favicon.png` | `index.html:13` (+ both sub-pages) | No browser-tab icon |
-| `images/apple-touch-icon.png` | `index.html:14` (+ both sub-pages) | No icon when saved to an iOS home screen |
+### 2. ~~Three referenced images return 404~~ — DONE 2026-08-23
+Real assets (`founder.png`, `Logo.png`, `Full Logo.png`) supplied in
+`Absolute Event & Travel Services/` (gitignored source masters, kept out of the
+Firebase deploy too — see `firebase.json` ignore list). Processed and dropped into
+`/images`:
 
-Also `index.html:21` — `og:image` still points at `hero_light.png` rather than a real
-1200×630 branded share card.
+| File | Source | Notes |
+|---|---|---|
+| `images/founder.jpg` | `founder.png` | Resized to 1000×1000, JPEG q85 (89 KB) |
+| `images/favicon.png` | `Logo.png` (cropped to the "A" mark) | Transparent, 512×512 master (69 KB) |
+| `images/apple-touch-icon.png` | same mark, on navy `#0F172A` | 180×180, opaque per iOS convention (7 KB) |
+| `images/og-image.png` | `Full Logo.png` + tagline | 1200×630 branded share card on cream `#F7F3E9` (123 KB) |
+
+`og:image` updated to `images/og-image.png` in all three pages.
+
+**Not done / flagged, not silently changed:** the header/footer still use the CSS
+"A" stamp (`.stamp-logo`, `index.html:81`), not the real logo image now available.
+That's a bigger visual change than this fix — decide separately whether to swap it in.
 
 ### 3. Fleet capacity/baggage figures are unverified estimates
 - **Where:** `fleet.html:210` (marked with a `VERIFY` comment), table below it
@@ -129,6 +138,13 @@ page split is working — are driven by data rather than guesswork.
   before pushing it live.
 - **Untracked local experiments** kept out of the deploy: `parallax_mockup.html`,
   `true_2d5_image_depth.html`, `_mockup-founder.html`. Say so if any should go live.
+- **`Absolute Event & Travel Services/`** holds the raw brand-asset masters (source
+  `founder.png`, `Logo.png`, `Full Logo.png`) — gitignored and excluded from the
+  Firebase deploy. Processed derivatives live in `/images`; go back to the masters
+  if a different crop/size is ever needed.
+- **Deploy file count went up.** Four new images landed in `/images` (favicon,
+  apple-touch-icon, founder.jpg, og-image.png) — expect `found 14 files`, not 10,
+  on the next deploy. Recheck the ignore list if the jump is bigger than that.
 - **`script.js` is shared across all three pages** and needs no per-page variants —
   every init null-guards or uses `querySelectorAll`.
 

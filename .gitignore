@@ -15,3 +15,7 @@ firebase-debug.log
 
 # Crash junk
 *.stackdump
+.gstack/
+
+# Raw brand-asset exports (large PSD/PNG masters) — processed copies live in /images
+Absolute Event & Travel Services/
