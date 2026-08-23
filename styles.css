@@ -1107,7 +1107,12 @@ textarea.input-light {
 }
 
 .proof-num {
-  font-family: var(--font-serif);
+  /* Playfair Display's digits aren't oldstyle-vs-lining-switchable — this is
+     just how the typeface draws numerals (uneven heights, descender-like
+     tails on 5/9), true to its display-serif character but wrong for a
+     stat callout that needs to read as confident and uniform at a glance.
+     Sans for the numeral only; everything else on the page stays serif. */
+  font-family: var(--font-sans);
   font-size: 3rem;
   font-weight: 800;
   color: var(--color-gold);
