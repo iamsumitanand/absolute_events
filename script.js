@@ -161,8 +161,8 @@ function renderVisaDetails(key) {
 
   if (docsList) {
     docsList.innerHTML = data.docs.map(doc => `
-      <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-main);">
-        <i class="fas fa-check" style="color: var(--color-emerald);"></i> ${doc}
+      <li class="doc-checklist-item">
+        <i class="fas fa-check"></i> ${doc}
       </li>
     `).join('');
   }

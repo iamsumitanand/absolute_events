@@ -237,15 +237,6 @@ img {
   text-align: left;
 }
 
-@media (max-width: 768px) {
-  .section-head-split {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 32px;
-  }
-  .section-head-split .editorial-subtitle { max-width: none; }
-}
 
 /* ==========================================================================
    TOP ANNOUNCEMENT BAR & NAVIGATION BAR
@@ -738,6 +729,22 @@ img {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  margin-bottom: 16px; /* every current usage repeated this inline; the one
+                           exception (the modal's last field) is overridden
+                           below via :last-of-type */
+}
+
+#modal-inquiry-form .field-group:last-of-type {
+  margin-bottom: 24px;
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+.honeypot {
+  display: none;
 }
 
 .field-group label {
@@ -991,6 +998,21 @@ textarea.input-light {
   box-shadow: var(--shadow-soft);
 }
 
+/* Rendered by renderVisaDetails() in script.js for each country's document
+   checklist. */
+.doc-checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.doc-checklist-item i {
+  color: var(--color-emerald);
+}
+
 /* ==========================================================================
    CAR HIRE FLEET (LIGHT THEME)
    ========================================================================== */
@@ -1172,11 +1194,6 @@ textarea.input-light {
   color: var(--color-gold);
 }
 
-@media (max-width: 768px) {
-  .closing-cta-section { padding: 72px 0; }
-  .closing-cta-actions { flex-direction: column; gap: 20px; }
-}
-
 /* ==========================================================================
    CASE STUDY
    ========================================================================== */
@@ -1274,6 +1291,73 @@ textarea.input-light {
   margin-bottom: 60px;
 }
 
+/* Footer component classes — this whole footer block is kept identical
+   across index.html/fleet.html/visa.html by convention, so these were
+   duplicated as inline styles 3x each (12x for .footer-icon, used 4x
+   per footer). */
+.footer-editorial .brand-logo {
+  margin-bottom: 16px;
+}
+
+.footer-editorial .stamp-logo {
+  width: 38px;
+  height: 38px;
+  padding: 6px;
+}
+
+.footer-editorial .brand-title {
+  color: #FFFFFF;
+}
+
+.footer-about {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+}
+
+.footer-heading {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.footer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-icon {
+  color: var(--color-gold);
+  margin-right: 8px;
+}
+
+.footer-address {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.footer-contact-line {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 6px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .footer-editorial a {
   color: rgba(255, 255, 255, 0.7);
 }
@@ -1314,6 +1398,38 @@ textarea.input-light {
   box-shadow: var(--shadow-deep);
   max-height: 92vh;
   overflow-y: auto;
+}
+
+/* Modal component classes — this whole modal block is kept identical
+   across index.html/fleet.html/visa.html by convention, so these were
+   duplicated as inline styles 3x each. */
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.modal-card-light .editorial-tag {
+  margin-bottom: 8px;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+
+.modal-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
 }
 
 .modal-status {
@@ -1407,6 +1523,25 @@ textarea.input-light {
     bottom: 16px;
     right: 16px;
   }
+
+  .section-head-split {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .section-head-split .editorial-subtitle { max-width: none; }
+
+  .closing-cta-section { padding: 72px 0; }
+  .closing-cta-actions { flex-direction: column; gap: 20px; }
+
+  /* Sub-page chrome (visa.html, fleet.html) */
+  .page-hero { padding: 52px 0 48px; }
+  .page-hero-title { font-size: 2.1rem; max-width: none; }
+  .page-hero-sub { font-size: 1rem; }
+  .page-hero-actions .btn, .teaser-card .btn { width: 100%; justify-content: center; }
+  .process-grid { grid-template-columns: 1fr; }
+  .teaser-card { padding: 28px; }
 }
 
 /* ==========================================================================
@@ -1667,13 +1802,6 @@ textarea.input-light {
   .teaser-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-@media (max-width: 768px) {
-  .page-hero { padding: 52px 0 48px; }
-  .page-hero-title { font-size: 2.1rem; max-width: none; }
-  .page-hero-sub { font-size: 1rem; }
-  .page-hero-actions .btn { width: 100%; justify-content: center; }
-  .process-grid { grid-template-columns: 1fr; }
-  .teaser-card { padding: 28px; }
-  .teaser-card .btn { width: 100%; justify-content: center; }
-}
+/* Sub-page ≤768px rules live in the single consolidated
+   @media (max-width: 768px) block below "Mobile Responsiveness" — this
+   file used to have four separate ≤768px blocks; merged into one. */

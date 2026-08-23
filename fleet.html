@@ -308,21 +308,21 @@
     <div class="container">
       <div class="footer-grid-editorial">
         <div>
-          <div class="brand-logo" style="margin-bottom: 16px;">
-            <div class="stamp-logo" style="width: 38px; height: 38px; padding: 6px;"><img src="images/logo-mark.png" alt="Absolute Event &amp; Travel Services logo"></div>
+          <div class="brand-logo">
+            <div class="stamp-logo"><img src="images/logo-mark.png" alt="Absolute Event &amp; Travel Services logo"></div>
             <div>
-              <span class="brand-title" style="color: #FFF;">Absolute</span>
+              <span class="brand-title">Absolute</span>
               <span class="brand-subtext">Event & Travel Services</span>
             </div>
           </div>
-          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.7;">
+          <p class="footer-about">
             Operational in Delhi/NCR since 2013 with nationwide and overseas channel partners. Providing 360° corporate ticketing, MICE events, luxury holidays, visa concierge, and car rentals.
           </p>
         </div>
 
         <div>
-          <h4 style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF; margin-bottom: 20px;">Services</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-list">
             <li><a href="index.html#mice">Corporate MICE & Summits</a></li>
             <li><a href="index.html#services">Leisure Holiday Packages</a></li>
             <li><a href="visa.html">Visa Concierge Desk</a></li>
@@ -332,8 +332,8 @@
         </div>
 
         <div>
-          <h4 style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF; margin-bottom: 20px;">Company</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#story">Our Founder's Note</a></li>
             <li><a href="visa.html">Visa Checklist</a></li>
@@ -342,23 +342,23 @@
         </div>
 
         <div>
-          <h4 style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF; margin-bottom: 20px;">Head Office</h4>
-          <p style="font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 12px;">
-            <i class="fas fa-map-marker-alt" style="color: var(--color-gold); margin-right: 8px;"></i>
+          <h4 class="footer-heading">Head Office</h4>
+          <p class="footer-address">
+            <i class="fas fa-map-marker-alt footer-icon"></i>
             <strong>Absolute Event & Travel Services</strong><br>
             B-4, Asha Park near Hari Nagar, New Delhi - 110018
           </p>
-          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 6px;">
-            <i class="fas fa-phone" style="color: var(--color-gold); margin-right: 8px;"></i> <a href="tel:+911149032957">+91-11-4903-2957</a> | <a href="tel:+919990445127">+91-9990445127</a>
+          <p class="footer-contact-line">
+            <i class="fas fa-phone footer-icon"></i> <a href="tel:+911149032957">+91-11-4903-2957</a> | <a href="tel:+919990445127">+91-9990445127</a>
           </p>
-          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75);">
-            <i class="fas fa-envelope" style="color: var(--color-gold); margin-right: 8px;"></i> <a href="mailto:ops@absolutetravels.com">ops@absolutetravels.com</a><br>
-            <i class="fas fa-user" style="color: var(--color-gold); margin-right: 8px;"></i> Contact Person (Pravesh): <a href="mailto:pravesh@absolutetravels.com">pravesh@absolutetravels.com</a>
+          <p class="footer-contact-line">
+            <i class="fas fa-envelope footer-icon"></i> <a href="mailto:ops@absolutetravels.com">ops@absolutetravels.com</a><br>
+            <i class="fas fa-user footer-icon"></i> Contact Person (Pravesh): <a href="mailto:pravesh@absolutetravels.com">pravesh@absolutetravels.com</a>
           </p>
         </div>
       </div>
 
-      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+      <div class="footer-bottom">
         <p>© 2026 Absolute Event & Travel Services. Operational since 2013.</p>
         <p>Handcrafted Editorial Experience</p>
       </div>
@@ -368,13 +368,13 @@
   <!-- MODAL INQUIRY POPUP (LIGHT THEME) -->
   <div class="modal-backdrop-light" id="inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
     <div class="modal-card-light">
-      <button class="modal-close" aria-label="Close inquiry form" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+      <button class="modal-close" aria-label="Close inquiry form">&times;</button>
 
-      <span class="editorial-tag" style="margin-bottom: 8px;">Direct Desk</span>
-      <h3 id="modal-heading" style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 800; color: var(--color-navy); margin-bottom: 8px;">
+      <span class="editorial-tag">Direct Desk</span>
+      <h3 id="modal-heading" class="modal-title">
         Plan Your Travel or Event
       </h3>
-      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;">
+      <p class="modal-desc">
         Fill out your details and Pravesh or a senior travel consultant will connect with you within 30 minutes.
       </p>
 
@@ -383,19 +383,19 @@
         <input type="hidden" name="subject" value="New Website Inquiry — Absolute Travels">
         <input type="hidden" name="from_name" value="Absolute Travels Website">
         <!-- honeypot: bots fill this, humans don't -->
-        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="honeypot">
 
-        <div class="field-group" style="margin-bottom: 16px;">
+        <div class="field-group">
           <label>Your Full Name</label>
           <input type="text" class="input-light" id="modal-name" name="name" placeholder="e.g. Rahul Verma" required>
         </div>
 
-        <div class="field-group" style="margin-bottom: 16px;">
+        <div class="field-group">
           <label>Mobile Number / WhatsApp</label>
           <input type="tel" class="input-light" id="modal-phone" name="phone" placeholder="e.g. +91 98765 43210" required>
         </div>
 
-        <div class="field-group" style="margin-bottom: 16px;">
+        <div class="field-group">
           <label>Service Category</label>
           <!-- pre-selected to this page's service -->
           <select class="input-light" id="modal-service-type" name="service">
@@ -406,12 +406,12 @@
           </select>
         </div>
 
-        <div class="field-group" style="margin-bottom: 24px;">
+        <div class="field-group">
           <label>Event / Journey Notes</label>
           <textarea class="input-light" id="modal-notes" name="notes" rows="3" placeholder="Pickup and drop locations, dates, number of passengers, and how many days you need the vehicle..."></textarea>
         </div>
 
-        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; font-size: 1rem;">
+        <button type="submit" class="btn btn-gold btn-block">
           <i class="fab fa-whatsapp"></i> Send Inquiry
         </button>
 
