@@ -37,27 +37,22 @@ function initMobileNav() {
 }
 
 /* --------------------------------------------------------------------------
-   0b. HOME HERO — transparent nav solidifies on scroll + subtle image parallax.
-   Only present on index.html (#home / #home-hero-image); no-ops elsewhere so
-   visa.html/fleet.html's plain sticky navbar is unaffected.
+   0b. HOME HERO — transparent nav solidifies on scroll.
+   Only present on index.html (#home); no-ops elsewhere so visa.html/
+   fleet.html's plain sticky navbar is unaffected.
+   (No image parallax here on purpose — it needed a scale(1.06) overscale to
+   have room to pan, which just made the image look zoomed in for no real
+   benefit. Simpler and it looks like what was actually approved.)
    -------------------------------------------------------------------------- */
 function initHomeHero() {
   const navbar = document.getElementById('navbar');
   const hero = document.getElementById('home');
-  const heroImage = document.getElementById('home-hero-image');
   if (!navbar || !hero) return;
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let ticking = false;
 
   function update() {
-    const y = window.scrollY;
-    navbar.classList.toggle('scrolled', y > 40);
-    if (!reduceMotion && heroImage) {
-      // scale(1.06) matches the CSS base transform (styles.css .home-hero-image) —
-      // reapplied here because setting .style.transform overwrites it otherwise.
-      heroImage.style.transform = `translate3d(0, ${y * 0.08}px, 0) scale(1.06)`;
-    }
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
     ticking = false;
   }
 
